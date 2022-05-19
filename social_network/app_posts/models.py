@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 
 class PostClass(models.Model):
-    Post_id = models.IntegerField()
+    Post_id = models.IntegerField(primary_key=True)
     Title_post_tr = models.CharField(max_length=50)
     Title_post = models.CharField(max_length=50)
     Author = models.CharField(max_length=50)
@@ -12,5 +12,5 @@ class PostClass(models.Model):
     Full_content = models.CharField(max_length=50)
     Views_post = models.IntegerField()
     Favorites = models.BooleanField()
-    Likes = models.SmallIntegerField(-1, 0, 1)
+    # Likes = models.SmallIntegerField(-1, 0, 1)
     Rating = models.IntegerField()
