@@ -3,7 +3,7 @@ from .models import PostClass
 
 
 class PostSerializer(serializers.ModelSerializer):
-    Author = serializers.HiddenField(default=serializers.CurrentUserDefault())
+    user_id = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = PostClass

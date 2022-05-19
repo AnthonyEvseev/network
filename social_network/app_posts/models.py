@@ -7,7 +7,7 @@ class PostClass(models.Model):
     Post_id = models.IntegerField(primary_key=True)
     Title_post_tr = models.CharField(max_length=50)
     Title_post = models.CharField(max_length=50)
-    Author = models.CharField(max_length=50)
+    user_id = models.CharField(max_length=50)
     Crop_content = models.CharField(max_length=250)
     Full_content = models.CharField(max_length=50)
     Views_post = models.IntegerField()
