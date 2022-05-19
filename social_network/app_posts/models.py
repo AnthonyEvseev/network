@@ -14,3 +14,10 @@ class PostClass(models.Model):
     Favorites = models.BooleanField()
     # Likes = models.SmallIntegerField(-1, 0, 1)
     Rating = models.IntegerField()
+
+
+class Test(models.Model):
+    name = models.CharField(max_length=100, db_index=True)
+
+    def __str__(self):
+        return self.name
