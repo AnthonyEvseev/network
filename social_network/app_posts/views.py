@@ -4,7 +4,7 @@ from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .models import PostClass, Test
+from .models import PostClass, Author
 from .serializer import PostSerializer
 from .models import PostClass
 
@@ -16,8 +16,8 @@ def index(request):
     return render(request, 'app_posts/index.html', {'posts': posts, 'menu': menu, 'title': 'Главная страница'})
 
 
-def categories(request, Post_id):
-    return HttpResponse(f"<h1>Пост номер {Post_id}</h1>")
+def posts(request, post_id):
+    return HttpResponse(f"<h1>Пост номер {post_id}</h1>")
 
 
 def pageNotFound(request, exception):
@@ -40,5 +40,5 @@ class PostViewSet(viewsets.ModelViewSet):
 
     @action(methods=['get'], detail=True)
     def category(self, request, pk=None):
-        cats = Test.objects.get(pk=pk)
+        cats = Author.objects.get(pk=pk)
         return Response({'cats': cats.name})
