@@ -8,10 +8,12 @@ from .models import PostClass, Test
 from .serializer import PostSerializer
 from .models import PostClass
 
+menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+
 
 def index(request):
     posts = PostClass.objects.all()
-    return render(request, 'app_posts/index.html', {'title': 'Главная страница'})
+    return render(request, 'app_posts/index.html', {'Post_id': posts, 'menu': menu, 'title': 'Главная страница'})
 
 
 def categories(request, Post_id):
