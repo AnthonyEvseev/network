@@ -13,7 +13,7 @@ menu = ["О сайте", "Добавить статью", "Обратная св
 
 def index(request):
     posts = PostClass.objects.all()
-    return render(request, 'app_posts/index.html', {'Post_id': posts, 'menu': menu, 'title': 'Главная страница'})
+    return render(request, 'app_posts/index.html', {'posts': posts, 'menu': menu, 'title': 'Главная страница'})
 
 
 def categories(request, Post_id):
