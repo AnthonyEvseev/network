@@ -5,6 +5,7 @@
     {% for p in posts %}
     <li><h2>{{p.Title_post}}</h2>
         {% autoescape on %}
+        {{p.user_id|linebreaks|truncatewords:50}}
         {{p.Full_content|linebreaks|truncatewords:50}}
         {% endautoescape %}
         <div class="clear"></div>

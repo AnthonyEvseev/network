@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, viewsets
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -16,8 +16,17 @@ def index(request):
     return render(request, 'app_posts/index.html', {'posts': posts, 'menu': menu, 'title': 'Главная страница'})
 
 
-def posts(request, post_id):
-    return HttpResponse(f"<h1>Пост номер {post_id}</h1>")
+def show_post(request, post_id):
+    post = get_object_or_404(PostClass, pk=post_id)
+
+    context = {
+        'post': post,
+        'menu': menu,
+        'title': post.Title_post,
+        'cat_selected': post.Slug,
+    }
+
+    return render(request, 'app_posts/post.html', context=context)
 
 
 def pageNotFound(request, exception):
